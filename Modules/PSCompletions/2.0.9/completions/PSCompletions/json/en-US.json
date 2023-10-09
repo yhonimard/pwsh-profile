@@ -1,0 +1,294 @@
+{
+    "list": [
+        "✨Displays the completions that have been added\n",
+        "{{$_psc.json.example.list}}"
+    ],
+    "list --remote": "Display all available completions in the repository({{$_psc.repo}})",
+    "add": [
+        "{{",
+        "$has=Compare-Object ($_psc.installed).BaseName $_psc.list -PassThru;",
+        "if($has){'✨'};",
+        "}}",
+        "add completion\n",
+        "{{$_psc.json.example.add}}"
+    ],
+    "rm": [
+        "{{",
+        "$install=($_psc.installed).BaseName | Where-Object {$_ -ne 'PSCompletions'};",
+        "if($install){'✨'};",
+        "}}",
+        "remove completion\n",
+        "{{$_psc.json.example.rm}}"
+    ],
+    "search": [
+        "search completion\n",
+        "{{$_psc.json.example.search}}"
+    ],
+    "update": [
+        "{{if($_psc.update){'✨'} }}",
+        "update completion\n",
+        "{{$_psc.json.example.update}}"
+    ],
+    "update *": [
+        "Update all completions that can be updated.\n",
+        "{{",
+        "$up=Get-Content $_psc.path.update;",
+        "$res='List:';",
+        "if($up){$res + ($up -join ',')}",
+        "else{'The added completions are all the latest!'};",
+        "}}"
+    ],
+    "which": [
+        "✨Locate completion storage location\n",
+        "{{$_psc.json.example.which}}"
+    ],
+    "alias": [
+        "✨Manage the alias that triggers completion.\n",
+        "{{$_psc.json.example.alias}}"
+    ],
+    "alias list": "Displays all completion aliases",
+    "alias add": [
+        "✨add completion alias.\n",
+        "{{$_psc.json.example.alias_add}}"
+    ],
+    "alias rm": [
+        "{{",
+        "$has=$_psc.comp_cmd.keys | Where-Object { if($_ -eq 'PSCompletions'){$_psc.comp_cmd.$_ -ne 'psc'}else{$_ -ne $_psc.comp_cmd.$_} };",
+        "if($has){'✨'}",
+        "}}",
+        "remove completion alias\n",
+        "{{$_psc.json.example.alias_rm}}"
+    ],
+    "alias reset": "Remove all completion aliases",
+    "config": [
+        "✨Get/Set config\n",
+        "{{$_psc.json.example.config}}"
+    ],
+    "config language": [
+        "✨Get/Set language (current: en-US)\n",
+        "It will affect all completion under this module"
+    ],
+    "config language zh-CN": [
+        "Set language to zh-CN.\n",
+        "{{",
+        "$github=$_psc.config.github;$gitee=$_psc.config.gitee;",
+        "if($gitee){",
+        "   \"After setting up, When adding completion,`nIt will download files from the Gitee repository($gitee)\"",
+        "}elseif($github){",
+        "   \"Due to Gitee repository not being added, After setting up, It will still download files from the Github repository($github)\"",
+        "  + \"`n\" + 'you can add a Gitee repository by running \"'+ $_psc.root_cmd + ' config gitee <repo>\"'",
+        "}else{ $_psc.json.repo_add }",
+        "}}"
+    ],
+    "config root_cmd": "Get/Set PSCompletions alias, default to psc.",
+    "config github": "✨Get/Set the address of github repo.",
+    "config github \"\"": "Set Github repository to empty",
+    "config github https://github.com/abgox/PSCompletions": "Github repo",
+    "config gitee": "✨Get/Set the address of gitee repo",
+    "config gitee \"\"": "Set Gitee repository to empty",
+    "config gitee https://gitee.com/abgox/PSCompletions": "Gitee repo",
+    "config update": [
+        "✨Set whether to display remote update content when PSCompletions module is first loaded.\n",
+        "  1: Display updates\n",
+        "  0: Disable display of updates\n",
+        "  x.x.x: Module updates"
+    ],
+    "config update 1": "Display updates when PSCompletions module is first loaded.",
+    "config update 0": "Disable display of updates  when PSCompletions module is first loaded.",
+    "config reset": "Reset all configs to default.\nInclude(language,root_cmd,github,gitee,update)",
+    "PSCompletions_core_info": {
+        "description": [
+            "PSCompletions({{$_psc.root_cmd}}) --- Command completion manager\n",
+            "For more information, please visit the following project\n",
+            "  Github: https://github.com/abgox/PSCompletions\n",
+            "  Gitee: https://gitee.com/abgox/PSCompletions"
+        ],
+        "init_info": [
+            "✨✨✨PSCompletions({{$_psc.root_cmd}}) -- Init successfully!✨✨✨\n",
+            "(The following content is only displayed for the first time)\n",
+            "You just need to type \"{{$_psc.root_cmd}}\" and only \"Tab\", and you will quickly understand all commands.\n",
+            "Use \"{{$_psc.root_cmd}} add <completion>\" to add the first completion!\n",
+            "\n",
+            "About special symbols in Completion Description\n",
+            "- ✨: Press Space and Tab to get command completion When it's selected. (except for special cases)\n",
+            "- ✨✨：Type a string without spaces, then press Space and Tab to get command completion.\n",
+            "- ...: The description here will be filled in in the future.\n",
+            "   - If ... is the last one in the completion, it means that the display area is too small to display all completions.\n",
+            "\n",
+            "For more information, please visit the project:\n",
+            "  Github: https://github.com/abgox/PSCompletions\n",
+            "  Gitee:  https://gitee.com/abgox/PSCompletions\n",
+            "If you find the project helpful, please consider giving it a star."
+        ],
+        "error": "Please check your network.",
+        "module_warn": "Module Warning(PSCompletions):",
+        "repo_add": [
+            "There are currently no remote repository added.It will lead to failure in adding completion.\n",
+            "You can add default repository by running the following command:\n",
+            "{{$_psc.root_cmd}} config github https://github.com/abgox/PSCompletions\n",
+            "{{$_psc.root_cmd}} config gitee https://gitee.com/abgox/PSCompletions"
+        ],
+        "repo_err": "{{$_psc.json.module_warn + \"`n\" + $_psc.json.repo_add}}",
+        "confirm": "Press Enter to continue，or press any other key to abort",
+        "cancel": "The operation has been canceled",
+        "init_err": "Init failed.Please check your network.",
+        "download_dir": "Completion's directory: ",
+        "cmd_error": [
+            "Subcommand({{$_psc.root_cmd}}) isn't exist.\n",
+            "It's recommended to type \"{{$_psc.root_cmd}}\" and press \"Tab\" to complete."
+        ],
+        "module_update": [
+            "The powershell module(PSCompletions) can be updated now!Update?(The added completion will be automatically migrated)\n",
+            "({{$_psc.version}} => {{$_psc.config.update}})\n",
+            "{{",
+            "$log=(Get-Content -Raw  ($_psc.path.core +'\\log.json') -Encoding UTF8 -ErrorAction SilentlyContinue | ConvertFrom-Json).PSObject.Properties;",
+            "$num=1;",
+            "$log | Foreach-Object {",
+            "   if($_.Name -gt $_psc.version){if($num){$_.Name + ':' + $_.Value;$num=0}else{\"`n\" + $_.Name + ':' + $_.Value} }",
+            " }",
+            "}}\n",
+            "{{$_psc.json.confirm}}"
+        ],
+        "module_updating": "Updating PSCompletions module",
+        "module_update_done": "PSCompletions module update completed.Please restart the terminal and re-import the module",
+        "module_update_err": [
+            "PSCompletions module update failed, Please enter the following command to update\n",
+            "Update-Module PSCompletions"
+        ],
+        "param_min": "Too few parameters.",
+        "param_max": "Too many parameters.",
+        "param_err": "Parameter error",
+        "param_errs": [
+            "Subcommand({{$arg[1]}}) error\n",
+            "It should be one of ({{$cmd_list -join ','}})."
+        ],
+        "list_comp": "Completions",
+        "list_alias": "Alias",
+        "list_status": "Status",
+        "list_add": "🔴",
+        "list_add_done": "🟢",
+        "list_add_tip": "🟢: You have added it.   🔴:You haven't added it yet.",
+        "repo_using": "Current remote repository: {{$_psc.repo}}",
+        "add": "Add completion --- {{$_}}",
+        "adding": "Adding completion --- {{$completion}}",
+        "add_done": "Completion({{$completion}}) add completed",
+        "add_error": [
+            "Completion({{$_}}) isn't exist.\n",
+            "It's recommended to type \"{{$_psc.root_cmd}} add\" and press \"Tab\" to complete.\n",
+            "Or type \"{{$_psc.root_cmd}} search\" to search available completions."
+        ],
+        "add_download_err": [
+            "Completion({{$completion}}) add failed\n",
+            "{{$completion}} completion's file({{$fail_file}}) download error.\n",
+            "Please ensure that you can access {{$fail_file_url}}"
+        ],
+        "remove": "Remove completion --- {{$_}}",
+        "remove_done": "Completion({{$_}}) has been removed",
+        "remove_err": [
+            "Remove completion({{$_}}) failed. You haven't added {{$_}} yet.\n",
+            "It's recommended to type \"{{$_psc.root_cmd}} rm\" and press \"Tab\" to complete."
+        ],
+        "search": "{{if($result){'The search results are as follows:'}else{'No completion found!'}}}",
+        "update": "Update completion --- {{$_}}",
+        "updating": "Updating completion --- {{$completion}}",
+        "update_done": "Completion({{$completion}}) update completed",
+        "update_error": "Completion({{$_}}) update failed, You haven't added {{$_}} yet.",
+        "update_download_err": [
+            "Completion({{$completion}}) update failed\n",
+            "{{$completion}} completion's file({{$fail_file}}) download error.\n",
+            "Please ensure that you can access {{$fail_file_url}}"
+        ],
+        "update_info": "PSCompletions remote repo's update：",
+        "update_info_add": "Add：{{$add}}",
+        "update_info_modify": "Update：{{$_psc.update}}",
+        "update_tip": "If you don't want to see it，please type \"{{$_psc.root_cmd}} config update 0\"",
+        "update_info_can": "Available completion update",
+        "update_info_no": "The added completions are all the latest!",
+        "alias_add": [
+            "{{$alias=$_psc.comp_cmd.$_;if($_ -ne $alias){'Current value: '+ $alias }else{\"It hasn't been set\"}}}\n",
+            "Add a completion alias for {{$_}}"
+        ],
+        "alias_add_done": "The completion trigger command has been changed from {{$arg[2]}} to {{$arg[3]}}.\nPlease restart the terminal to take effect.",
+        "alias_del": "Alias delete list：{{$del_list -join ','}}",
+        "alias_rm": "Remove alias({{$_psc.comp_cmd.$_}}) --- {{$_}}",
+        "alias_err": "You haven't added {{$arg[2]}} yet.",
+        "alias_rm_done": [
+            "{{$_psc.json.alias_del}}\n",
+            "Please restart the terminal to take effect.\n",
+            "{{if('psc(PSCompletions) -in $del_list'){('(\"psc\" is the default alias for the PSCompletes module, which can only be modified and cannot be removed)')} }}"
+        ],
+        "alias_rm_err": "alias no exist --- ({{$error_list -join ','}})",
+        "alias_reset_confirm": "Remove all completion aliases\n{{$_psc.json.confirm}}",
+        "alias_reset_done": [
+            "Remove all alias!\n",
+            "{{$_psc.json.alias_del}}\n",
+            "Please restart the terminal to take effect.\n",
+            "{{if('psc(PSCompletions) -in $del_list'){('(\"psc\" is the default alias for the PSCompletes module, which can only be modified and cannot be removed)')} }}"
+        ],
+        "config_done": "{{$arg[1]}} => {{$arg[2]}} (If doesn't take effect, restart the terminal)",
+        "config_err": [
+            "Subcommand({{$arg[1]}}) error\n",
+            "It should be one of ({{$_psc.config.Keys;'reset'}})."
+        ],
+        "config_reset": "Reset all config?\n{{$_psc.json.confirm}}",
+        "config_reset_done": [
+            "Reset all config!\n",
+            "The current config is as follows:\n",
+            "{{",
+            "$_psc.config.keys | Foreach-Object { \"`n\" + $_ + ': ' + $_psc.config.$_}",
+            "}}"
+        ],
+        "which": "Locate completion storage location --- {{$_}}",
+        "which_err": [
+            "Locate completion({{$_}}) failed. You haven't added {{$_}} yet.\n",
+            "It's recommended to type \"{{$_psc.root_cmd}} which\" and press \"Tab\" to complete."
+        ],
+        "less_tip": "🔔Press Enter to view more, or any other key to exit!({{$lines}} lines remaining)🔔",
+        "comp_hide":"⚠️Due to the limited display area size, some completions have been hidden⚠️\nYou can filter by typing the prefix of the completion and pressing Tab",
+        "example": {
+            "list": [
+                "e.g. {{$_psc.root_cmd}} list\n",
+                "    {{$_psc.root_cmd}} list --remote"
+            ],
+            "add": [
+                "e.g. {{$_psc.root_cmd}} add git\n",
+                "    {{$_psc.root_cmd}} add git docker ..."
+            ],
+            "rm": [
+                "e.g. {{$_psc.root_cmd}} rm git\n",
+                "    {{$_psc.root_cmd}} rm git docker ..."
+            ],
+            "search": [
+                "e.g. {{$_psc.root_cmd}} search *    Show all\n",
+                "    {{$_psc.root_cmd}} search p*   Search for completion starting with p\n",
+                "    {{$_psc.root_cmd}} search *p*  Search for completion with p in the name\n"
+            ],
+            "update": [
+                "e.g. {{$_psc.root_cmd}} update              => check available update\n",
+                "    {{$_psc.root_cmd}} update *            => update all\n",
+                "    {{$_psc.root_cmd}} update <completion> => update completions"
+            ],
+            "alias": [
+                "e.g. {{$_psc.root_cmd}} alias list\n",
+                "    {{$_psc.root_cmd}} alias add git g\n",
+                "    {{$_psc.root_cmd}} alias rm g\n"
+            ],
+            "alias_list": "e.g. {{$_psc.root_cmd}} alias list",
+            "alias_add": "e.g. {{$_psc.root_cmd}} alias add git g",
+            "alias_add_err": "The alias ({{$arg[-1]}}) isn't available, because {{$arg[-1]}} is an existing command. Please set a different alias",
+            "alias_rm": [
+                "e.g. {{$_psc.root_cmd}} alias rm  <alias> [<alias2> ...]\n",
+                "    {{$_psc.root_cmd}} alias rm  g"
+            ],
+            "alias_reset": "e.g. {{$_psc.root_cmd}} alias reset",
+            "config": [
+                "e.g. {{$_psc.root_cmd}} config language         => Get language, it should return en-US\n",
+                "    {{$_psc.root_cmd}} config language zh-CN   => Set language to zh-CN"
+            ],
+            "which": [
+                "e.g. {{$_psc.root_cmd}} which git\n",
+                "    {{$_psc.root_cmd}} which git docker ..."
+            ]
+        }
+    }
+}

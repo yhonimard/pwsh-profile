@@ -1,0 +1,1 @@
+New-Alias yhoniserver yhoniserver@192.168.1.100

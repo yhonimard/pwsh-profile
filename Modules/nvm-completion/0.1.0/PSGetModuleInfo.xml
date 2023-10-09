@@ -1,0 +1,126 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">nvm-completion</S>
+      <Version N="Version">0.1.0</Version>
+      <S N="Type">Module</S>
+      <S N="Description">A nvm tab completion for PowerShell.</S>
+      <S N="Author">Kamack38</S>
+      <S N="CompanyName">kamack38</S>
+      <S N="Copyright">(c) 2022 Kamack38. All rights reserved.</S>
+      <DT N="PublishedDate">2022-02-09T11:17:28+07:00</DT>
+      <Obj N="InstalledDate" RefId="1">
+        <DT>2023-10-07T19:54:49.0926739+07:00</DT>
+        <MS>
+          <Obj N="DisplayHint" RefId="2">
+            <TN RefId="1">
+              <T>Microsoft.PowerShell.Commands.DisplayHintType</T>
+              <T>System.Enum</T>
+              <T>System.ValueType</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>DateTime</ToString>
+            <I32>2</I32>
+          </Obj>
+        </MS>
+      </Obj>
+      <Nil N="UpdatedDate" />
+      <URI N="LicenseUri">https://github.com/kamack38/posh-nvm-completion/blob/master/LICENSE</URI>
+      <URI N="ProjectUri">https://github.com/kamack38/posh-nvm-completion</URI>
+      <Nil N="IconUri" />
+      <Obj N="Tags" RefId="3">
+        <TN RefId="2">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>nvm</S>
+          <S>node</S>
+          <S>tab</S>
+          <S>tab-completion</S>
+          <S>completion</S>
+          <S>PSModule</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="4">
+        <TN RefId="3">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="2" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Command</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">DscResource</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <Nil N="ReleaseNotes" />
+      <Obj N="Dependencies" RefId="6">
+        <TNRef RefId="2" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="7">
+        <TN RefId="4">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">(c) 2022 Kamack38. All rights reserved.</S>
+          <S N="description">A nvm tab completion for PowerShell.</S>
+          <S N="requireLicenseAcceptance">False</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">92</S>
+          <S N="downloadCount">92</S>
+          <S N="packageSize">10348</S>
+          <S N="published">09/02/2022 11:17:28 +07:00</S>
+          <S N="created">09/02/2022 11:17:28 +07:00</S>
+          <S N="lastUpdated">23/09/2023 23:56:28 +07:00</S>
+          <S N="tags">nvm node tab tab-completion completion PSModule</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2023-09-23T23:56:28Z</S>
+          <S N="NormalizedVersion">0.1.0</S>
+          <S N="Authors">Kamack38</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">nvm-completion.nuspec|commands.ps1|lib.ps1|nvm-completion.psd1|options.ps1|utils.ps1|lib\Get-1stCompletions.ps1|lib\Get-3rdCompletions.ps1|options\install.ps1|subCommands\arch.ps1|subCommands\install.ps1|subCommands\list.ps1|subCommands\ls.ps1|subCommands\use.ps1|values\install.ps1|values\uninstall.ps1|values\use.ps1|completion.ps1|nvm-completion.psm1|subCommands.ps1|values.ps1|lib\Get-2ndCompletions.ps1|lib\Get-4thCompletions.ps1|options\use.ps1</S>
+          <S N="GUID">7f8d26ce-dd39-4649-aa83-e2fa4015e08a</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">C:\Users\yhonimard\Documents\PowerShell\Modules\nvm-completion\0.1.0</S>
+    </MS>
+  </Obj>
+</Objs>
